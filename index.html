@@ -3,42 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Short Film Dataset (SFD): A Benchmark for Story-Level Video Understanding">
-  <meta name="keywords" content="SFD">
+        content="Evaluating mathematical reasoning of foundation models in visual contexts">
+  <meta name="keywords" content="MathVista, Math Vista">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Short Film Dataset (SFD): A Benchmark for Story-Level Video Understanding</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <!-- <script>
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {
       dataLayer.push(arguments);
     }
-
+/Users/panlu/Library/Mobile Documents/com~apple~CloudDocs/ImageMath/visual-mathqa-server/data_final/images
     gtag('js', new Date());
 
     gtag('config', 'G-PYVRSFMDRL');
-  </script>
+  </script> -->
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link rel="icon" href="./static/images/sfd_logo2.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>  
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
 </head>
 <body>
 
@@ -50,38 +61,6 @@
       <span aria-hidden="true"></span>
     </a>
   </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://ridouaneg.github.io">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <!--
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-      -->
-    </div>
-
-  </div>
 </nav>
 
 
@@ -90,29 +69,42 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Short Film Dataset (SFD): A Benchmark for Story-Level Video Understanding</h1>
+          <h1 class="title is-1 publication-title is-bold">
+            <img src="static/images/sfd_logo2.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+            <span class="mathvista" style="vertical-align: middle">Short Film Dataset (SFD)</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle">
+            A Benchmark for Story-Level Video Understanding
+          </h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://ridouaneg.github.io">Ridouane Ghermi</a><sup>1</sup>,</span>
+              <a href="https://ridouaneg.github.io/">Ridouane Ghermi</a><sup>1</sup>,
+            </span>
+
             <span class="author-block">
-              <a href="https://triocrossing.github.io/">Xi Wang</a><sup>1</sup>,</span>
+              <a href="https://triocrossing.github.io/">Xi Wang</a><sup>1</sup>,
+            </span>
+
             <span class="author-block">
               <a href="https://vicky.kalogeiton.info/">Vicky Kalogeiton</a><sup>1</sup>,
             </span>
+
             <span class="author-block">
               <a href="https://www.di.ens.fr/~laptev/">Ivan Laptev</a><sup>2</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>LIX, Ecole Polytechnique, IP Paris,</span>
-            <span class="author-block"><sup>2</sup>MBZUAI</span>
+            <span class="author-block"><sup>1</sup>LIX, Ecole Polytechnique, IP Paris</span><br>
+            <span class="author-block"><sup>2</sup>MBZUAI</span><br>
+            <!--<span class="paper-block"><b style="color:#f41c1c">ICLR 2024 Oral</b> (85 in 7304, 1.2%)</span>-->
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
+                <!-- @PAN TODO: change links -->
                 <a href="https://arxiv.org/pdf/2406.10221"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -124,6 +116,8 @@
               <span class="link-block">
                 <a href="https://arxiv.org/abs/2406.10221"
                    class="external-link button is-normal is-rounded is-dark">
+                <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
+                   class="external-link button is-normal is-rounded is-dark"> -->
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
@@ -131,8 +125,7 @@
                 </a>
               </span>
               <!-- Video Link. -->
-              <!--
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -140,8 +133,7 @@
                   </span>
                   <span>Video</span>
                 </a>
-              </span>
-              -->
+              </span> -->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/shortfilmdataset/ShortFilmDataset"
@@ -153,15 +145,51 @@
                   </a>
               </span>
               <!-- Dataset Link. -->
-              <!--
               <span class="link-block">
                 <a href="https://huggingface.co/datasets/rghermi/sfd"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="far fa-images"></i>
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">🤗</p>
+                      <!-- 🔗 -->
                   </span>
-                  <span>Data</span>
-                  </a>
+                  <span>Dataset</span>
+                </a>
+              </span>
+              <!-- Visualization Link. -->
+              <!--
+              <span class="link-block">
+                <a href="https://mathvista.github.io/#visualization"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🔮</p>
+                  </span>
+                  <span>Visualize</span>
+                </a>
+              </span>
+              -->
+              <!-- Leaderboard Link. -->
+              <!--
+              <span class="link-block">
+                <a href="https://mathvista.github.io/#leaderboard"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🏆</p>
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+              </span>
+              -->
+              <!-- Twitter Link. -->
+              <!--
+              <span class="link-block">
+                <a href="https://twitter.com/lupantech/status/1717313355780964608"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🌐</p>
+                  </span>
+                  <span>Twitter</span>
+                </a>
               </span>
               -->
             </div>
@@ -173,86 +201,58 @@
   </div>
 </section>
 
-<!--
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section>
--->
 
-<!--
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <img src="static/images/tease_scores_gpt4v.png" alt="geometric reasoning" width="99%"/>
+      <p> Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human performance our proposed 
+      <img src="static/images/mathvista.png" style="width:1.0em;vertical-align: middle" alt="Logo"/>
+      <span class="mathvista">MathVista</span>
+      across mathematical reasoning and visual context types. PoT refers to program-of-thought prompting, and PoT GPT-4 is a textual LLM augmented with the caption and OCR text. GPT-4V is manually evaluated via the playground chatbot.
+      </p>
     </div>
   </div>
-</section>
--->
+</section> -->
 
 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container" style="margin-top: -150px; margin-bottom: -100px;">
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/samples/sample1.png" alt="geometric reasoning" width="84%"/>
+              <p style="margin-bottom: 30px;">Video Link:&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=Gi__cddQCNU">https://www.youtube.com/watch?v=Gi__cddQCNU</a></p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/samples/sample2.png" alt="geometric reasoning" width="84%"/>
+              <p style="margin-bottom: 30px;">Video Link:&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=qEaoaRpRRzo">https://www.youtube.com/watch?v=qEaoaRpRRzo</a></p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/samples/sample3.png" alt="geometric reasoning" width="84%"/>
+              <p style="margin-bottom: 30px;">Video Link:&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=05-CLtrWn38">https://www.youtube.com/watch?v=05-CLtrWn38</a></p>
+            </div>
+          </div>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/samples/sample4.png" alt="geometric reasoning" width="84%"/>
+              <p style="margin-bottom: 30px;">Video Link:&nbsp;&nbsp;<a href="https://www.youtube.com/watch?v=7mSH86O2qzA">https://www.youtube.com/watch?v=7mSH86O2qzA</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -260,72 +260,59 @@
         <div class="content has-text-justified">
           <p>
             Recent advances in vision-language models have significantly propelled video understanding. 
-            Existing datasets and tasks, however, have notable limitations. Most datasets are confined 
-            to short videos with limited events and narrow narratives. For example, datasets with 
-            instructional and egocentric videos often document the activities of one person in a single scene. 
-            Although some movie datasets offer richer content, they are often limited to short-term tasks, 
-            lack publicly available videos and frequently encounter data leakage given the use of movie 
-            forums and other resources in LLM training. To address the above limitations, we propose the 
-            Short Film Dataset (SFD) with 1,078 publicly available amateur movies, a wide variety of genres 
-            and minimal data leakage issues. SFD offers long-term story-oriented video tasks in the form of 
-            multiple-choice and open-ended question answering. Our extensive experiments emphasize the need 
-            for long-term reasoning to solve SFD tasks. Notably, we find strong signals in movie transcripts leading 
-            to the on-par performance of people and LLMs. We also show significantly lower performance of current 
-            models compared to people when using vision data alone.
+            Existing datasets and tasks, however, have notable limitations. 
+            Most datasets are confined to short videos with limited events and narrow narratives. 
+            For example, datasets with instructional and egocentric videos often document the activities of one person in a single scene. 
+            Although some movie datasets offer richer content, they are often limited to short-term tasks, lack publicly available videos and frequently encounter data leakage given the use of movie forums and other resources in LLM training. 
+          </p>
+          <p>
+            To address the above limitations, we propose the 
+            <img src="static/images/sfd_logo2.png" style="width:1.0em;vertical-align: middle" alt="Logo"/>
+            <span class="mathvista">Short Film Dataset (SFD)</span> 
+            with 1,078 publicly available amateur movies, a wide variety of genres and minimal data leakage issues. 
+            SFD offers long-term story-oriented video tasks in the form of multiple-choice and open-ended question answering. 
+            Our extensive experiments emphasize the need for long-term reasoning to solve SFD tasks. 
+            Notably, we find strong signals in movie transcripts leading to the on-par performance of people and LLMs. 
+            We also show significantly lower performance of current models compared to people when using vision data alone. 
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
+</div>
+</section>
 
-    <!-- Paper video. -->
-    <!--
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    -->
-    <!--/ Paper video. -->
+
+<!-- @PAN TODO: bibtex -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3 has-text-centered">BibTeX</h2>
+    <pre><code>@inproceedings{ghermi2024short,
+  author  = {Ghermi, Ridouane and Wang, Xi and Kalogeiton, Vicky and Laptev, Ivan},
+  title   = {Short Film Dataset (SFD): A Benchmark for Story-Level Video Understanding},
+  journal = {arXiv},
+  year    = {2024}
+}</code></pre>
   </div>
 </section>
 
+
 <footer class="footer">
-  <div class="container">
-    <!--
+  <!-- <div class="container"> -->
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
     </div>
-    -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
+            This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a>, licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
           </p>
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 </footer>
 
 </body>
